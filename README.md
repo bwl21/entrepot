@@ -7,7 +7,7 @@ Entrepot memorizes the results along the way to speed up repetitive processing. 
 
 Immerdiate results are stored on disk, to enable defered processing and reuse of previous results.
 
-To some extend entrepot can be considered as a kind of entrepot. But
+To some extend entrepot can be considered as a kind of cache. But
 
 - entities in entrepot have no expiration date
 - entrepot also handles the processing of entities
@@ -47,56 +47,51 @@ Or install it yourself as:
 
     puts result
 
-Note that the entrepot is configured when the entrepot object is created. If
-you want to change the options, simply create a new entrepot object with
+Note that the entrepot is configured upon instantiation is created. If
+you want to change the options, simply create a new Entrepot instance with
 the desire options.
+
+For more usage examples, please refer to the spec files.
 
 ## options
 
-':entrepot'
-:   This is the folder where entrepot crates the entrepot
+- **:entrepot** - This is the folder where entrepot keeps the entities for latter reuse
 
-':salt'
-:   The content is salted by this in order to ensure that the entrepot
+- **:salt** - The content is salted by this in order to ensure that the objects stored in the entrepot
     matches the current version of the software.
 
-':mkname'
-:   A procedure yielding a string which is used as filename for an
+- **:mkname** - A procedure yielding a string which is used as filename for an
     individual entrepot.
 
-':logger'
-:   a logger object which is used to log the entrepot operation. Messages
-    are sent by logger.info
+- **:logger** - a logger object which is used to log the entrepot operation. Messages
+    are sent by logger.info. Therefore the object needs to respond_to 'info'
 
-':mode'
-:   Sets the operation mode of the entrepot. This allows to disable caching
+- **:mode** - Sets the operation mode of the entrepot. This allows to disable caching
     for debug purposes. The following values apply:
 
-    ':active'
-    :   the entrepot is active
+    - *:active* - the entrepot is active
 
-    'refresh'
-    :   the entrepot files are rebuilt, but not read before
+    - *:refresh* - the entrepot files are rebuilt, but not read before. Use this during development. Otherwise you need to change :salt whenever you change the processing of your program
 
-    'passive'
-    :   caching does not operate at all. Cache files are neither read
-        nor read
+    - *:passive* - entrepot does not operate at all. Entprepot files are neither read
+        nor read. This is basically for debugging purposes
 
 ## methods
 
-'files'
-:   provides an array of files for a given name available in the entrepot
+- **process** - performs a entrepot supported processing. This is the heart of the whole thing. See example above
 
-'clean'
-:   cleans all entrepot entries. In this all files in the entrepot are
-    cleaned. Thereby basename and mdsum are replaced by "\*" in order to
+- **files** - provides an array of entrpot internal filenames for a given name
+
+- **clean** - cleans all entrepot entities. In this all internal in the entrepot are
+    removed. Thereby basename and mdsum are replaced by "\*" in order to
     get a globber.
 
     Of course cou can also manually delete the files in the entrepot
     directoy
 
-'process'
-:   performs a entrepot supported processing.
+# License
+
+see LICENSE.txt
 
 # Contributing
 
