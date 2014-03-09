@@ -1,4 +1,4 @@
-# _entrepot_ - entrepot supported processing
+# _entrepot_ -  process and save intermediate results
 
 Ruby is excellent for transforming and filtering data.
 
