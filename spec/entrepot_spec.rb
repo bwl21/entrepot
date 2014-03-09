@@ -1,5 +1,5 @@
 $:.unshift 'lib'
-require 'cachew'
+require 'entrepot'
 require 'fileutils'
 
 class Logger

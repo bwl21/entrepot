@@ -29,6 +29,7 @@ Immerdiate results are stored on disk, to enable defered processing and reuse of
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "fileutils"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pry"
 

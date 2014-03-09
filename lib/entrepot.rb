@@ -1,4 +1,4 @@
-require "cachew/version"
+require "entrepot/version"
 require 'digest'
 
 module Entrepot
